@@ -1,0 +1,38 @@
+[
+    {
+        "model": "gestion_inmuebles.inmueble",
+        "pk": 1,
+        "fields": {
+            "nombre": "Casa en Santiago",
+            "descripcion": "Casa de 3 habitaciones en Santiago",
+            "m2_construidos": 120,
+            "m2_totales": 150,
+            "estacionamientos": 2,
+            "habitaciones": 3,
+            "banos": 2,
+            "direccion": "Av. Libertador 1234",
+            "comuna": 1,
+            "tipo_inmueble": "casa",
+            "precio_mensual": 500000,
+            "arrendador": 1
+        }
+    },
+    {
+        "model": "gestion_inmuebles.inmueble",
+        "pk": 2,
+        "fields": {
+            "nombre": "Departamento en Viña del Mar",
+            "descripcion": "Departamento con vista al mar",
+            "m2_construidos": 60,
+            "m2_totales": 70,
+            "estacionamientos": 1,
+            "habitaciones": 2,
+            "banos": 1,
+            "direccion": "Calle Mar 567",
+            "comuna": 2,
+            "tipo_inmueble": "departamento",
+            "precio_mensual": 400000,
+            "arrendador": 2
+        }
+    }
+]

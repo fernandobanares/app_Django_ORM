@@ -1,0 +1,12 @@
+Listado de Inmuebles para Arriendo - Separado por Regiones
+==================================================
+
+
+Región: Región de Arica y Parinacota
+--------------------------------------------------
+Nombre: Casa en Santiago
+Descripción: Casa de 3 habitaciones en Santiago
+--------------------------------------------------
+Nombre: Departamento en Viña del Mar
+Descripción: Departamento con vista al mar
+--------------------------------------------------

@@ -1,0 +1,118 @@
+[
+    {
+        "model": "auth.user",
+        "pk": 1,
+        "fields": {
+            "username": "arrendador1",
+            "password": "password123",
+            "email": "arrendador1@mail.com"
+        }
+    },
+    {
+        "model": "gestion_inmuebles.arrendador",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "nombres": "Carlos",
+            "apellidos": "Sánchez",
+            "rut": "12345678-9",
+            "direccion": "Av. Providencia 1234",
+            "telefono": "987654321",
+            "experiencia": 5
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 2,
+        "fields": {
+            "username": "arrendador2",
+            "password": "password123",
+            "email": "arrendador2@mail.com"
+        }
+    },
+    {
+        "model": "gestion_inmuebles.arrendador",
+        "pk": 2,
+        "fields": {
+            "user": 2,
+            "nombres": "Juan",
+            "apellidos": "Pérez",
+            "rut": "23456789-0",
+            "direccion": "Calle X 234",
+            "telefono": "912345678",
+            "experiencia": 10
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 3,
+        "fields": {
+            "username": "arrendatario1",
+            "password": "password123",
+            "email": "arrendatario1@mail.com"
+        }
+    },
+    {
+        "model": "gestion_inmuebles.arrendatario",
+        "pk": 1,
+        "fields": {
+            "user": 3,
+            "nombres": "Laura",
+            "apellidos": "González",
+            "rut": "98765432-1",
+            "direccion": "Calle Falsa 456",
+            "telefono": "987654322",
+            "ingresos_mensuales": 1200000.00,
+            "ocupacion": "Ingeniera",
+            "referencias": "Referencia de trabajo"
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 4,
+        "fields": {
+            "username": "arrendatario2",
+            "password": "password123",
+            "email": "arrendatario2@mail.com"
+        }
+    },
+    {
+        "model": "gestion_inmuebles.arrendatario",
+        "pk": 2,
+        "fields": {
+            "user": 4,
+            "nombres": "María",
+            "apellidos": "García",
+            "rut": "45678901-2",
+            "direccion": "Calle Z 890",
+            "telefono": "934567890",
+            "ingresos_mensuales": 1000000.00,
+            "ocupacion": "Contadora",
+            "referencias": "Referencia laboral"
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 5,
+        "fields": {
+            "username": "arrendatario3",
+            "password": "password123",
+            "email": "arrendatario3@mail.com"
+        }
+    },
+    {
+        "model": "gestion_inmuebles.arrendatario",
+        "pk": 3,
+        "fields": {
+            "user": 5,
+            "nombres": "Ana",
+            "apellidos": "Fernández",
+            "rut": "56789012-3",
+            "direccion": "Calle A 123",
+            "telefono": "945678901",
+            "ingresos_mensuales": 800000.00,
+            "ocupacion": "Abogada",
+            "referencias": "Referencia personal"
+        }
+    }
+]

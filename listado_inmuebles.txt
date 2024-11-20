@@ -1,0 +1,15 @@
+Listado de Inmuebles para Arriendo - Separado por Comunas
+==================================================
+
+
+Comuna: Arica
+--------------------------------------------------
+Nombre: Casa en Santiago
+Descripción: Casa de 3 habitaciones en Santiago
+--------------------------------------------------
+
+Comuna: Camarones
+--------------------------------------------------
+Nombre: Departamento en Viña del Mar
+Descripción: Departamento con vista al mar
+--------------------------------------------------
