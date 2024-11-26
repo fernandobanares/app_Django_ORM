@@ -1,22 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class Persona(models.Model):
+class Arrendador(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     nombres = models.CharField(max_length=100)
     apellidos = models.CharField(max_length=100)
     rut = models.CharField(max_length=12, unique=True)
     direccion = models.CharField(max_length=200)
     telefono = models.CharField(max_length=15)
-
-    class Meta:
-        abstract = True
-
-    def __str__(self):
-        return f"{self.nombres} {self.apellidos}"
-
-
-class Arrendador(Persona):
+    mail = models.EmailField(max_length=100, blank=True, null=True)  # Nuevo campo
     empresa = models.CharField(max_length=100, blank=True, null=True)
     experiencia = models.IntegerField(default=0, help_text="Años de experiencia como Arrendador.")
 
@@ -24,8 +16,17 @@ class Arrendador(Persona):
         return f"Arrendador: {self.nombres} {self.apellidos}"
 
 
-class Arrendatario(Persona):
-    ingresos_mensuales = models.DecimalField(max_digits=10, decimal_places=2, help_text="Ingresos mensuales del Arrendatario")
+class Arrendatario(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    nombres = models.CharField(max_length=100)
+    apellidos = models.CharField(max_length=100)
+    rut = models.CharField(max_length=12, unique=True)
+    direccion = models.CharField(max_length=200)
+    telefono = models.CharField(max_length=15)
+    mail = models.EmailField(max_length=100, blank=True, null=True)  # Nuevo campo
+    ingresos_mensuales = models.DecimalField(
+        max_digits=10, decimal_places=2, default=0.00, help_text="Ingresos mensuales del Arrendatario"
+    )
     ocupacion = models.CharField(max_length=100, help_text="Ocupación del arrendatario")
     referencias = models.TextField(blank=True, null=True, help_text="Referencias anteriores")
 

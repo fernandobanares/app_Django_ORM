@@ -1,9 +1,46 @@
-<!-- templates/home.html -->
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Bienvenido al inicio</h1>
+<div class="container text-center mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <h1 class="display-4 mb-4">Bienvenido a Inmobiliaria XYZ</h1>
+            <p class="lead mb-4">Descubre las mejores opciones para tu nuevo hogar. Encuentra propiedades en venta y arriendo a tu medida.</p>
+        </div>
+    </div>
+</div>
 
-
+<div class="container mt-5 text-center">
+    <h2 class="mb-4">Lo que Ofrecemos</h2>
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow">
+                <img src="https://via.placeholder.com/400x250" class="card-img-top" alt="Propiedad 1">
+                <div class="card-body">
+                    <h5 class="card-title">Compra de Propiedades</h5>
+                    <p class="card-text">Encuentra tu lugar ideal para vivir, con opciones de compra que se ajustan a tu presupuesto.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow">
+                <img src="https://via.placeholder.com/400x250" class="card-img-top" alt="Propiedad 2">
+                <div class="card-body">
+                    <h5 class="card-title">Arriendo de Propiedades</h5>
+                    <p class="card-text">Si buscas alquilar, tenemos diversas opciones de arriendo de casas y departamentos.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 shadow">
+                <img src="https://via.placeholder.com/400x250" class="card-img-top" alt="Propiedad 3">
+                <div class="card-body">
+                    <h5 class="card-title">Asesoría Inmobiliaria</h5>
+                    <p class="card-text">Te brindamos asesoría profesional para que tomes la mejor decisión en el mercado inmobiliario.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

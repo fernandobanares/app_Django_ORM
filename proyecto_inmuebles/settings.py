@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+CSP_DEFAULT_SRC = ("'self'",)
+CSP_SCRIPT_SRC = ("'self'", "'unsafe-inline'",)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -123,7 +125,7 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-LOGIN_REDIRECT_URL = '/'  # Redirige al inicio (o a cualquier otra página)
-#LOGOUT_REDIRECT_URL = '/'  # Redirige al inicio (o a cualquier otra página)
-
+LOGIN_REDIRECT_URL = '/' 
+#LOGOUT_REDIRECT_URL = '/'  
 LOGIN_URL = 'login'
+

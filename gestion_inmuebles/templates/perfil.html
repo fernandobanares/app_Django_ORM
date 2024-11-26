@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">Perfil de Usuario</h2>
+
+                    <!-- Mostrar datos del usuario -->
+                    <h3>Datos del Usuario</h3>
+                    <p><strong>Nombre de Usuario:</strong> {{ user.username }}</p>
+                    <p><strong>Email:</strong> {{ user.email }}</p>  <!-- Mostrar el email del usuario -->
+                    
+                    {% if user.arrendador %}
+                        <p><strong>Dirección:</strong> {{ user.arrendador.direccion }}</p>
+                        <p><strong>Teléfono:</strong> {{ user.arrendador.telefono }}</p>
+                        <p><strong>Correo adicional (Arrendador):</strong> {{ user.arrendador.mail }}</p>
+                    {% elif user.arrendatario %}
+                        <p><strong>Dirección:</strong> {{ user.arrendatario.direccion }}</p>
+                        <p><strong>Teléfono:</strong> {{ user.arrendatario.telefono }}</p>
+                        <p><strong>Correo adicional (Arrendatario):</strong> {{ user.arrendatario.mail }}</p>
+                    {% endif %}
+
+                    <!-- Botón para editar los datos -->
+                    <div class="text-center">
+                        <button id="edit-button" class="btn btn-primary btn-block" onclick="toggleEditForm()">Editar Datos</button>
+                    </div>
+
+                    <!-- Formulario de edición (oculto por defecto) -->
+                    <form method="POST" id="edit-form" style="display: none;">
+                        {% csrf_token %}
+                        <h3>Editar Datos Personales</h3>
+
+                        <!-- Formulario de edición -->
+                        <div class="form-group">
+                            <h4>Editar Email</h4>
+                            {{ user_form.as_p }}  <!-- Mostrar el formulario para editar el email del usuario -->
+
+                            <h4>Editar Datos de la Persona</h4>
+                            {{ persona_form.as_p }}  <!-- Mostrar el formulario para editar los datos del Arrendador o Arrendatario -->
+                        </div>
+
+                        <!-- Botón para guardar los cambios -->
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-block">Guardar Cambios</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Función para mostrar/ocultar el formulario de edición
+    function toggleEditForm() {
+        var editForm = document.getElementById("edit-form");
+        var editButton = document.getElementById("edit-button");
+
+        // Alternar la visibilidad del formulario de edición y el botón
+        if (editForm.style.display === "none") {
+            editForm.style.display = "block";
+            editButton.style.display = "none";  // Ocultar el botón "Editar Datos"
+        } else {
+            editForm.style.display = "none";
+            editButton.style.display = "block";  // Mostrar el botón "Editar Datos" nuevamente
+        }
+    }
+</script>
+{% endblock %}
