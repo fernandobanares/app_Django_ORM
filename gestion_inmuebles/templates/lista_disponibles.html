@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="text-center mb-4">Inmuebles Disponibles</h1>
+    <div class="row">
+        {% for inmueble in inmuebles %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{ inmueble.nombre }}</h5>
+                    <p class="card-text">
+                        <strong>Tipo:</strong> {{ inmueble.get_tipo_inmueble_display }}<br>
+                        <strong>Descripción:</strong> {{ inmueble.descripcion|default:"Sin descripción" }}<br>
+                        <strong>Dirección:</strong> {{ inmueble.direccion }}<br>
+                        <strong>Precio mensual:</strong> ${{ inmueble.precio_mensual }}
+                    </p>
+                </div>
+                <div class="card-footer text-center">
+                    <button class="btn btn-primary btn-sm" disabled>Contactar Arrendador</button>
+                    <!-- Aquí puedes agregar funcionalidad para contactar al arrendador -->
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center">No hay inmuebles disponibles para arrendar.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

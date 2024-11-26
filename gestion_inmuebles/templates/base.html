@@ -60,6 +60,21 @@
                 <ul class="navbar-nav ms-auto">
                     {% if user.is_authenticated %}
                     <li class="nav-item">
+                        <a href="{% url 'lista_disponibles' %}" class="nav-link">Inmuebles Disponibles</a>
+                    </li>
+                    <li class="nav-item">
+                        <form method="POST" action="{% url 'lista_inmuebles' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-link nav-link">Modificar Inmuebles</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
+                        <form method="POST" action="{% url 'agregar_inmueble' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-link nav-link">Agregar Inmueble</button>
+                        </form>
+                    </li>
+                    <li class="nav-item">
                         <form method="POST" action="{% url 'perfil' %}">
                             {% csrf_token %}
                             <button type="submit" class="btn btn-link nav-link">Perfil</button>
@@ -73,8 +88,11 @@
                     </li>
                     {% else %}
                     <li class="nav-item">
-                        <a href="{%url 'register-me" }a/%>
+                        <a href="{%url 'register-me" }a>
                             <a href="{% url 'login' %}" class="nav-link">Iniciar sesión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'lista_disponibles' %}" class="nav-link">Inmuebles Disponibles</a>
                     </li>
                     {% endif %}
                 </ul>

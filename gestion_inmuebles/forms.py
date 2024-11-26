@@ -1,12 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Arrendador, Arrendatario, Inmueble
-from django import forms
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
-
-# forms.py
+from .models import Arrendador, Arrendatario, Inmueble, Comuna
 
 class CustomUserCreationForm(UserCreationForm):
     TIPO_USUARIO_CHOICES = [
@@ -72,17 +67,17 @@ class CustomUserCreationForm(UserCreationForm):
 # forms.py
 
 class UserEditForm(forms.ModelForm):
-    email = forms.EmailField(max_length=100, required=True)  # Asegurándote de que el campo email esté presente
-    mail = forms.EmailField(max_length=100, required=False)  # Campo mail para la persona (Arrendador/Arrendatario)
-    
+    email = forms.EmailField(max_length=100, required=True)
+    mail = forms.EmailField(max_length=100, required=False)  # Campo mail para la persona
+
     class Meta:
         model = User
-        fields = ['email']  # Incluir el campo email del modelo User
-    
+        fields = ['email']  # Solo incluir el campo email del modelo User
+
     def save(self, commit=True):
         user = super().save(commit=False)
         user.email = self.cleaned_data['email']  # Actualizar el email del User
-        
+
         # Guardar el correo también en la instancia de Arrendador/Arrendatario
         persona = None
         if hasattr(user, 'arrendador'):
@@ -91,11 +86,13 @@ class UserEditForm(forms.ModelForm):
             persona = user.arrendatario
         
         if persona:
-            persona.mail = self.cleaned_data.get('mail', persona.mail)
-            if commit:
-                persona.save()  # Guardar la instancia de Arrendador/Arrendatario
+            persona.mail = self.cleaned_data['mail']  # Actualizar el correo del modelo Arrendador/Arrendatario
+
         if commit:
-            user.save()
+            user.save()  # Guardar el usuario
+            if persona:
+                persona.save()  # Guardar la instancia de Persona (Arrendador/Arrendatario)
+
         return user
 
 class ArrendadorEditForm(forms.ModelForm):
@@ -107,3 +104,24 @@ class ArrendatarioEditForm(forms.ModelForm):
     class Meta:
         model = Arrendatario
         fields = ['direccion', 'telefono', 'mail']
+
+class InmuebleForm(forms.ModelForm):
+    class Meta:
+        model = Inmueble
+        fields = [
+            'nombre', 'descripcion', 'm2_construidos', 'm2_totales', 'estacionamientos',
+            'habitaciones', 'banos', 'direccion', 'comuna', 'tipo_inmueble', 'precio_mensual'
+        ]
+        widgets = {
+            'descripcion': forms.Textarea(attrs={'rows': 3, 'class': 'form-control'}),
+            'nombre': forms.TextInput(attrs={'class': 'form-control'}),
+            'm2_construidos': forms.NumberInput(attrs={'class': 'form-control'}),
+            'm2_totales': forms.NumberInput(attrs={'class': 'form-control'}),
+            'estacionamientos': forms.NumberInput(attrs={'class': 'form-control'}),
+            'habitaciones': forms.NumberInput(attrs={'class': 'form-control'}),
+            'banos': forms.NumberInput(attrs={'class': 'form-control'}),
+            'direccion': forms.TextInput(attrs={'class': 'form-control'}),
+            'comuna': forms.Select(attrs={'class': 'form-control'}),
+            'tipo_inmueble': forms.Select(attrs={'class': 'form-control'}),
+            'precio_mensual': forms.NumberInput(attrs={'class': 'form-control'}),
+        }
